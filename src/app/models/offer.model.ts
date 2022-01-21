@@ -5,5 +5,6 @@ export class Offer {
     description?:string;
     price?:number;
     created_at?:number;
+    category?:any;
 
 }
