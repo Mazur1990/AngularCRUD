@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Offer } from '../models/offer.model';
 
-const baseUrl = 'https://backend-recruitment-api.herokuapp.com/'
+const baseUrl = 'https://backend-recruitment-api.herokuapp.com/offers/'
 
 
 @Injectable({
@@ -32,8 +32,6 @@ update(id:any, data:any): Observable<any> {
 delete(id:any): Observable<any> {
   return this.http.delete(`${baseUrl}/${id}`);
 }
-// TO DO ! ! !
-// Change to remove single item or remove this function at all
 deleteAll(): Observable<any> {
   return this.http.delete(baseUrl)
 }

@@ -40,7 +40,6 @@ export class OffersListComponent implements OnInit {
     this.currentIndex =index
   }
 
-  //to be considerd to remove single offer
     removeAllOffers():void{
       this.offerService.deleteAll()
         .subscribe({

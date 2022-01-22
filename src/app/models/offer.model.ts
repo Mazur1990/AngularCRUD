@@ -6,5 +6,7 @@ export class Offer {
     price?:number;
     created_at?:number;
     category?:any;
+    // check published in code
+    published?:boolean;
 
 }

@@ -1,1 +1,73 @@
-<p>offers-details works!</p>
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentOffer.id">
+        <h4>Offer</h4>
+        <div>
+            <label><strong>Title:</strong></label> {{ currentOffer.title }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentOffer.description }}
+        </div>
+        <!-- <div>
+          <label><strong>Status:</strong></label>
+          {{ currentOffer.published ? "Published" : "Pending" }}
+        </div> -->
+    </div>
+    <div *ngIf="!currentOffer">
+        <br/>
+        <p>Please click on an Offer...</p>
+    </div>
+</div>
+
+<ng-template #editable>
+    <div *ngIf="currentOffer.id" class="edit-form">
+        <h4>Offer</h4>
+        <form>
+            <div class="form-group">
+                <label for='title'>Title:</label>
+                <input type="text" class="form-control" id='title' [(ngModel)]='currentOffer.title' name='title'>
+            </div>
+            <div class="form-group">
+                <label for='description'>Description:</label>
+                <input type="text" class="form-control" id='description' [(ngModel)]='currentOffer.description'>
+            </div>
+            
+            <div class="form-group">
+                <label><strong>Category</strong></label>
+                <input type="text" class="form-control" id='category' [(ngModel)]='currentOffer.category'>
+            </div>
+            <!-- <div class="form-group">
+                <label for='category'>Status:</label>
+                {{ currentOffer.published ? "Published" : "Pending" }}
+            </div> -->
+        </form>
+            <button
+            class="badge badge-primary mr-2"
+           
+            (click)="updatePublished(false)"
+        >
+            UnPublish
+        </button>
+        <button
+            
+            class="badge badge-primary mr-2"
+            (click)="updatePublished(true)"
+        >
+            Publish
+        </button>
+    
+        <button class="badge badge-danger mr-2" (click)="deleteOffer()">
+            Delete
+        </button>
+    
+        <button
+            type="submit"
+            class="badge badge-success mb-2"
+            (click)="updateOffer()"
+        >
+            Update
+        </button>
+        <p>{{ message }}</p>
+
+    </div>
+</ng-template>

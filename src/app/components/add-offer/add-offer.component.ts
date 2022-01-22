@@ -13,7 +13,7 @@ export class AddOfferComponent implements OnInit {
   offer: Offer = {
     title:'',
     description: '',
-    category:'',
+    category:''
   };
   submitted = false;
 
@@ -41,7 +41,7 @@ export class AddOfferComponent implements OnInit {
       this.offer = {
         title:'',
         description:'',
-        category:''
+        category:'',
       }
     }
 }
