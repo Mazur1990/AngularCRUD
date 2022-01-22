@@ -38,8 +38,8 @@ deleteAll(): Observable<any> {
   return this.http.delete(baseUrl)
 }
 
-// More to thing about searching details regarding to category search not title
-findByTitle(category:any): Observable<Offer[]>{
+// More to think about searching details regarding to category search not title
+findByCategory(category:any): Observable<Offer[]>{
   return this.http.get<Offer[]>(`${baseUrl}?category=${category}`)
 }
 

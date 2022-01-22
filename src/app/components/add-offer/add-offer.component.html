@@ -1,1 +1,24 @@
-<p>add-offer works!</p>
+<div>
+    <div class="submit-form">
+        <div *ngIf="!submitted">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type='text' class="form-conrol" id="title" required [(ngModel)]="offer.title" name="title">
+            </div>
+
+            <div class="form-group">
+                <label form="description">Descripion</label>
+                <input class="form-conrol" id="description" required [(ngModel)]="offer.description" name="description">
+            </div>
+            <div class="form-group">
+                <label form="category">Category</label>
+                <input class="form-conrol" id="category" required [(ngModel)]="offer.category" name="category">
+            </div>
+            <button (click)='saveOffer()' class="btn btn-success">Submit</button>
+        </div>
+        <div *ngIf='submitted'>
+            <h4>Offer was submitted successfully</h4>
+            <button class="btn btn-success" (click)='newOffer()'>Add</button>
+        </div>
+    </div>
+</div>
