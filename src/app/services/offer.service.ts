@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Offer } from '../models/offer.model';
 
-const baseUrl = 'https://backend-recruitment-api.herokuapp.com/offers/'
-
+const baseUrl = 'https://backend-recruitment-api.herokuapp.com'
+const offersUrl ='/offers/'
+const categoryUrl = '/category/'
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class OfferService {
   constructor(private http: HttpClient) { }
 
   getAll():Observable<Offer[]> {
-    return this.http.get<Offer[]>(baseUrl)
+    return this.http.get<Offer[]>(baseUrl+offersUrl)
   }
 
   get(id: any): Observable<Offer> {

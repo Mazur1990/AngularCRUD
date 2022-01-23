@@ -12,7 +12,7 @@
         <ul class="list-group">
             <li class="list-group-item"
             *ngFor="let offer of offers; let i = index" [class.active]="i == currentIndex"
-            (click)="setActiveOffer(offer,i)">{{offer.category}}</li>
+            (click)="setActiveOffer(offer,i)">{{offer.title}}</li>
         </ul>
         <button class='m-3 btn btn-sm btn-danger' (click)='removeAllOffers()'>Remove All</button>
     </div>
