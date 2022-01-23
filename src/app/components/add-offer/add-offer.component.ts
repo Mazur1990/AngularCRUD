@@ -13,7 +13,8 @@ export class AddOfferComponent implements OnInit {
   offer: Offer = {
     title:'',
     description: '',
-    category:''
+    category:'',
+    price:0,
   };
   submitted = false;
 
@@ -25,7 +26,8 @@ export class AddOfferComponent implements OnInit {
       const data = {
         title: this.offer.title,
         description: this.offer.description,
-        category: this.offer.category
+        category: this.offer.category,
+        price:this.offer.price
       };
       this.offerService.create(data)
         .subscribe({
@@ -41,7 +43,7 @@ export class AddOfferComponent implements OnInit {
       this.offer = {
         title:'',
         description:'',
-        category:'',
+        category:''
       }
     }
 }

@@ -12,7 +12,8 @@ export class OffersListComponent implements OnInit {
   offers?:Offer[];
   currentOffer:Offer = {};
   currentIndex = -1;
-  category='';
+  category=0;
+  title=''
 
   constructor(private offerService: OfferService) { }
 
@@ -50,16 +51,29 @@ export class OffersListComponent implements OnInit {
           error: (e) =>console.error(e)
         })
     }
-    searchCategory():void{
-      this.currentOffer ={};
-      this.currentIndex =-1;
-      this.offerService.findByCategory(this.category)
-        .subscribe({
-          next:(data) =>{
-            this.offers = data;
-            console.log(data);
-          },
-          error:(e) => console.error(e)
-        })
+    // searchCategory():void{
+    //   this.currentOffer ={};
+    //   this.currentIndex =-1;
+    //   this.offerService.findByCategory(this.category)
+    //     .subscribe({
+    //       next:(data) =>{
+    //         this.offers = data;
+    //         console.log(data);
+    //       },
+    //       error:(e) => console.error(e)
+    //     })
+    // }
+    searchTitle(): void {
+      this.currentOffer = {};
+      this.currentIndex = -1;
+  
+      this.offerService.findByTitle(this.title)
+      .subscribe({
+        next: (data) => {
+          this.offers = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+        });
     }
 }

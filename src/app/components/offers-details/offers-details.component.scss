@@ -2,3 +2,29 @@
   max-width: 400px;
   margin: auto;
 }
+
+.badge {
+  display: inline-block;
+  margin: 5px;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.badge-warning {
+  color: #212529;
+  background-color: #ffc107;
+}
+
+.badge-danger {
+  background-color: #ff0713;
+}
+.badge-success {
+  background-color: #07ff0f;
+}

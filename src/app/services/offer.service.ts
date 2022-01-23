@@ -12,38 +12,38 @@ const categoryUrl = '/category/'
 })
 export class OfferService {
 
-  constructor(private http: HttpClient) { }
+constructor(private http: HttpClient) { }
 
-  getAll():Observable<Offer[]> {
-    return this.http.get<Offer[]>(baseUrl+offersUrl)
-  }
+getAll():Observable<Offer[]> {
+  return this.http.get<Offer[]>(baseUrl+offersUrl)
+}
 
-  get(id: any): Observable<Offer> {
-    return this.http.get(`${baseUrl}/${id}`)
-  }
+get(id: any): Observable<Offer> {
+  return this.http.get(`${baseUrl+offersUrl}${id}`)
+}
 
-  create(data:any): Observable<any>{
-    return this.http.post(baseUrl,data);
-  }
+create(data:any): Observable<any>{
+  return this.http.post(baseUrl+offersUrl,data);
+}
 
 update(id:any, data:any): Observable<any> {
-  return this.http.put(`${baseUrl}/${id}`, data)
+  return this.http.post(`${baseUrl+offersUrl}${id}`, data)
 }
 
 delete(id:any): Observable<any> {
-  return this.http.delete(`${baseUrl}/${id}`);
+  return this.http.delete(`${baseUrl+offersUrl}${id}`);
 }
 deleteAll(): Observable<any> {
-  return this.http.delete(baseUrl)
+  return this.http.delete(baseUrl+offersUrl)
 }
 
 // More to think about searching details regarding to category search not title
-findByCategory(category:any): Observable<Offer[]>{
+findByCategory(category:number): Observable<Offer[]>{
   return this.http.get<Offer[]>(`${baseUrl}?category=${category}`)
 }
 
-// findByTitle(titley:any): Observable<Offer[]>{
-//   return this.http.get<Offer[]>(`${baseUrl}?title=${title}`)
-// }
+findByTitle(title:any): Observable<Offer[]>{
+  return this.http.get<Offer[]>(`${baseUrl+offersUrl}?title=${title}`)
+}
 
 }

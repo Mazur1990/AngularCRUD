@@ -24,6 +24,9 @@
           <label><strong>Status:</strong></label>
           {{ currentOffer.published ? "Published" : "Pending" }}
         </div> -->
+        <a class="badge badge-warning" routerLink="/offers/{{ currentOffer.id }}">
+        Edit Offer
+        </a>
     </div>
     <div *ngIf="!currentOffer">
         <br/>
@@ -31,7 +34,7 @@
     </div>
 </div>
 
-<ng-template #editable>
+<!-- <ng-template #editable>
     <div *ngIf="currentOffer.id" class="edit-form">
         <h4>Offer</h4>
         <form>
@@ -48,10 +51,10 @@
                 <label><strong>Category</strong></label>
                 <input type="text" class="form-control" id='category' [(ngModel)]='currentOffer.category'>
             </div>
-            <!-- <div class="form-group">
+            <div class="form-group">
                 <label for='category'>Status:</label>
                 {{ currentOffer.published ? "Published" : "Pending" }}
-            </div> -->
+            </div>
         </form>
             <button
             class="badge badge-primary mr-2"
@@ -82,4 +85,36 @@
         <p>{{ message }}</p>
 
     </div>
-</ng-template>
+</ng-template> -->
+
+<ng-template #editable>
+    <div *ngIf="currentOffer.id" class="edit-form">
+      <h4>Offer</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" [(ngModel)]="currentOffer.title" name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" [(ngModel)]="currentOffer.description" name="description"
+          />
+        </div>
+      </form>
+  
+     
+  
+        <button type="submit" class="badge badge-success mb-2" (click)="updateOffer()">
+            Update
+        </button>
+        <button class="badge badge-danger mr-2" (click)="deleteOffer()">
+            Delete
+        </button>
+      <p>{{ message }}</p>
+    </div>
+    <div *ngIf="!currentOffer.id">
+      <br />
+      <p>Cannot access this Offer...</p>
+    </div>
+  </ng-template>

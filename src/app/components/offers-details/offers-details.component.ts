@@ -12,9 +12,11 @@ export class OffersDetailsComponent implements OnInit {
 
   @Input() viewMode = false;
   @Input() currentOffer: Offer = {
+    id:'',
     title:'',
     description:'',
-    category:'',
+    // category:"",
+    
   }
   message = ''
 
@@ -33,44 +35,26 @@ export class OffersDetailsComponent implements OnInit {
 
   getOffer(id:string):void{
     this.offerService.get(id)
-      .subscribe({
-        next:(data) => {
-          this.currentOffer = data;
-          console.log(data);
+    .subscribe({
+      next:(data) => {
+        this.currentOffer = data;
+        console.log(data);
         },
         error: (e) =>console.error(e)
       })
   }
-  updatePublished(status:boolean):void {
-    const data= {
-      title:this.currentOffer.title,
-      description: this.currentOffer.description,
-      category:'',
-      published:status
-    }
-    this.message = '';
 
-    this.offerService.update(this.currentOffer.id, data)
-      .subscribe({
-        next:(res) =>{
-          console.log(res);
-          this.currentOffer.category = status;
-          this.message = res.message ? res.message: 'The category was updated succesfully'
-        },
-        error:(e) => console.error(e)
-      })
-  }
-
+    // need to think about this function - data base seems to not have PUT option
   updateOffer(): void {
     this.message = '';
-
     this.offerService.update(this.currentOffer.id, this.currentOffer)
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.message = res.message ? res.message : 'This tutorial was updated successfully!';
-        },
-        error: (e) => console.error(e)
+    .subscribe({
+      next: (res) => {
+        console.log(res);
+        this.message = res.message ? res.message : 'This offer was updated successfully!';
+        console.log('test')
+      },
+      error: (e) => console.error(e)
       });
   }
 
