@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Offer } from 'src/app/models/offer.model';
 import { OfferService } from 'src/app/services/offer.service';
 
+
 @Component({
   selector: 'app-offers-list',
   templateUrl: './offers-list.component.html',
   styleUrls: ['./offers-list.component.scss']
 })
 export class OffersListComponent implements OnInit {
-
+  filterString:string ='';
   offers?:Offer[];
   currentOffer:Offer = {};
   currentIndex = -1;
-  category=0;
-  title=''
+  category_name='';
 
   constructor(private offerService: OfferService) { }
 
@@ -51,10 +51,21 @@ export class OffersListComponent implements OnInit {
           error: (e) =>console.error(e)
         })
     }
-    // searchCategory():void{
-    //   this.currentOffer ={};
-    //   this.currentIndex =-1;
-    //   this.offerService.findByCategory(this.category)
+    searchCategory():void{
+      this.currentOffer ={};
+      this.currentIndex =-1;
+
+      this.offerService.findByCategory(this.category_name)
+        .subscribe({
+          next:(data) =>{
+            this.offers = data;
+            console.log(data);
+          },
+          error:(e) => console.error(e)
+        })
+    }
+    // searchCategory(): void {
+    //      this.offerService.findByCategory(this.category_name)
     //     .subscribe({
     //       next:(data) =>{
     //         this.offers = data;
@@ -62,18 +73,6 @@ export class OffersListComponent implements OnInit {
     //       },
     //       error:(e) => console.error(e)
     //     })
+      
     // }
-    searchTitle(): void {
-      this.currentOffer = {};
-      this.currentIndex = -1;
-  
-      this.offerService.findByTitle(this.title)
-      .subscribe({
-        next: (data) => {
-          this.offers = data;
-          console.log(data);
-        },
-        error: (e) => console.error(e)
-        });
-    }
 }

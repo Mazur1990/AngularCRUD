@@ -5,7 +5,6 @@ import { Offer } from '../models/offer.model';
 
 const baseUrl = 'https://backend-recruitment-api.herokuapp.com'
 const offersUrl ='/offers/'
-const categoryUrl = '/category/'
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +22,11 @@ get(id: any): Observable<Offer> {
 }
 
 create(data:any): Observable<any>{
-  return this.http.post(baseUrl+offersUrl,data);
+  return this.http.put(baseUrl+offersUrl,data);
 }
 
 update(id:any, data:any): Observable<any> {
-  return this.http.post(`${baseUrl+offersUrl}${id}`, data)
+  return this.http.put(`${baseUrl+offersUrl}${id}`, data)
 }
 
 delete(id:any): Observable<any> {
@@ -38,12 +37,14 @@ deleteAll(): Observable<any> {
 }
 
 // More to think about searching details regarding to category search not title
-findByCategory(category:number): Observable<Offer[]>{
-  return this.http.get<Offer[]>(`${baseUrl}?category=${category}`)
+findByCategory(category_name:any): Observable<Offer[]>{
+  return this.http.get<Offer[]>(`${baseUrl+offersUrl}?category_name=${category_name}`)
 }
 
-findByTitle(title:any): Observable<Offer[]>{
-  return this.http.get<Offer[]>(`${baseUrl+offersUrl}?title=${title}`)
-}
+
+
+// findByTitle(title:any): Observable<Offer[]>{
+//   return this.http.get<Offer[]>(`${baseUrl+offersUrl}?title=${title}`)
+// }
 
 }
