@@ -47,11 +47,10 @@
           />
         </div>
       </form>
-    
-        <button class="badge badge-danger mr-2" (click)="deleteOffer()">
-            Delete
-        </button>
-      <p>{{ message }}</p>
+        <button type="submit" class="badge badge-success mb-2" (click)="updateOffer()">Update</button>
+          <p>{{ message }}</p>
+        <button class="badge badge-danger mr-2" (click)="deleteOffer()">Delete</button>
+          <p>{{ message }}</p>
     </div>
     <div *ngIf="!currentOffer.id">
       <br />

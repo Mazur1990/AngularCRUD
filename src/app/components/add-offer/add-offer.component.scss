@@ -1,6 +1,10 @@
 .submit-form {
   max-width: 400px;
   margin: auto;
+  input,
+  select {
+    margin-left: 10px;
+  }
 }
 .btn-success {
   margin: 10px;

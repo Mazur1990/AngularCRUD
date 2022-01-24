@@ -22,7 +22,7 @@ get(id: any): Observable<Offer> {
 }
 
 create(data:any): Observable<any>{
-  return this.http.put(baseUrl+offersUrl,data);
+  return this.http.post(`${baseUrl+offersUrl}/`,data);
 }
 
 update(id:any, data:any): Observable<any> {

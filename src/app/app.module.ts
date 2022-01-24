@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AddOfferComponent } from './components/add-offer/add-offer.component';
 import { OffersDetailsComponent } from './components/offers-details/offers-details.component';
 import { OffersListComponent } from './components/offers-list/offers-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OffersListComponent } from './components/offers-list/offers-list.compon
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

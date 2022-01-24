@@ -52,6 +52,7 @@ export class OffersDetailsComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.message = res.message ? res.message : 'This offer was updated successfully!';
+        this.router.navigate(['/offers']);
       },
       error: (e) => console.error(e)
       });

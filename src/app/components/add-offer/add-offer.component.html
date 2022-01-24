@@ -2,20 +2,26 @@
     <div class="submit-form">
         <div *ngIf="!submitted">
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">Title :</label>
                 <input type='text' class="form-conrol" id="title" required [(ngModel)]="offer.title" name="title">
             </div>
 
             <div class="form-group">
-                <label form="description">Descripion</label>
+                <label form="description">Descripion: </label>
                 <input class="form-conrol" id="description" required [(ngModel)]="offer.description" name="description">
             </div>
             <div class="form-group">
-                <label form="category">Category</label>
-                <input class="form-conrol" id="category" required [(ngModel)]="offer.category" name="category">
+                <label form="category">Category: </label>
+                <select class="form-conrol" id="category" required [(ngModel)]="offer.category" name="category">
+                    <option value="1">Warzywa</option>
+                    <option value="2">Owoce</option>
+                    <option value="3">Zboża</option>
+                    <option value="4">Oleje</option>
+                    <option value="5">Orzechy</option>
+                </select>
             </div>
             <div class="form-group">
-                <label form="category">Price</label>
+                <label form="category">Price: </label>
                 <input class="form-conrol" id="category" required [(ngModel)]="offer.price" name="price">
             </div>
             <button (click)='saveOffer()' class="btn btn-success">Submit</button>
