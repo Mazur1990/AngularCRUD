@@ -41,18 +41,6 @@ export class OffersListComponent implements OnInit {
     this.currentOffer = offer;
     this.currentIndex =index
   }
-
-    removeAllOffers():void{
-      this.offerService.deleteAll()
-        .subscribe({
-          next:(res) =>{
-            console.log(res);
-            this.refreshList();
-          },
-          error: (e) =>console.error(e)
-        })
-    }
- 
     searchCategory(filterCategoryName:string): void {
        this.offers = this.filterOffers.filter(({category_name}) => category_name?.toLocaleLowerCase().includes(filterCategoryName))
       

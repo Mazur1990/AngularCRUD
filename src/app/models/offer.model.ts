@@ -7,5 +7,4 @@ export class Offer {
     created_at?:number;
     category?:any;
     category_name?:string
-
 }

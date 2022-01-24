@@ -29,9 +29,6 @@
         <p>Please click on an Offer...</p>
     </div>
 </div>
-
-
-
 <ng-template #editable>
     <div *ngIf="currentOffer.id" class="edit-form">
       <h4>Offer</h4>
@@ -47,8 +44,6 @@
           />
         </div>
       </form>
-        <button type="submit" class="badge badge-success mb-2" (click)="updateOffer()">Update</button>
-          <p>{{ message }}</p>
         <button class="badge badge-danger mr-2" (click)="deleteOffer()">Delete</button>
           <p>{{ message }}</p>
     </div>

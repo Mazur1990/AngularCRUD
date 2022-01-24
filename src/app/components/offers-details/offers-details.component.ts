@@ -44,20 +44,6 @@ export class OffersDetailsComponent implements OnInit {
       })
   }
 
-    // need to think about this function - data base seems to not have PUT option
-  updateOffer(): void {
-    this.message = '';
-    this.offerService.update(this.currentOffer.id, this.currentOffer)
-    .subscribe({
-      next: (res) => {
-        console.log(res);
-        this.message = res.message ? res.message : 'This offer was updated successfully!';
-        this.router.navigate(['/offers']);
-      },
-      error: (e) => console.error(e)
-      });
-  }
-
   deleteOffer():void{
     this.offerService.delete(this.currentOffer.id)
       .subscribe({
