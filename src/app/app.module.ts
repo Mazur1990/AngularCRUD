@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { AddOfferComponent } from './components/add-offer/add-offer.component';
 import { OffersDetailsComponent } from './components/offers-details/offers-details.component';
 import { OffersListComponent } from './components/offers-list/offers-list.component';
-import { FilterPipe } from './Pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { FilterPipe } from './Pipes/filter.pipe';
     AddOfferComponent,
     OffersDetailsComponent,
     OffersListComponent,
-    FilterPipe
   ],
   imports: [
     BrowserModule,

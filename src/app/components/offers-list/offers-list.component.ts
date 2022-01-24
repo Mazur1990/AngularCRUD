@@ -9,8 +9,9 @@ import { OfferService } from 'src/app/services/offer.service';
   styleUrls: ['./offers-list.component.scss']
 })
 export class OffersListComponent implements OnInit {
-  filterString:string ='';
   offers?:Offer[];
+  filterOffers: Offer [] = [];
+  filterCategoryName = '';
   currentOffer:Offer = {};
   currentIndex = -1;
   category_name='';
@@ -25,7 +26,7 @@ export class OffersListComponent implements OnInit {
       .subscribe({
         next:(data) =>{
           this.offers=data;
-          console.log(data);
+          this.filterOffers =data;
         },
         error:(e) => console.error(e)
       })
@@ -51,28 +52,9 @@ export class OffersListComponent implements OnInit {
           error: (e) =>console.error(e)
         })
     }
-    searchCategory():void{
-      this.currentOffer ={};
-      this.currentIndex =-1;
-
-      this.offerService.findByCategory(this.category_name)
-        .subscribe({
-          next:(data) =>{
-            this.offers = data;
-            console.log(data);
-          },
-          error:(e) => console.error(e)
-        })
-    }
-    // searchCategory(): void {
-    //      this.offerService.findByCategory(this.category_name)
-    //     .subscribe({
-    //       next:(data) =>{
-    //         this.offers = data;
-    //         console.log(data);
-    //       },
-    //       error:(e) => console.error(e)
-    //     })
+ 
+    searchCategory(filterCategoryName:string): void {
+       this.offers = this.filterOffers.filter(({category_name}) => category_name?.toLocaleLowerCase().includes(filterCategoryName))
       
-    // }
+    }
 }

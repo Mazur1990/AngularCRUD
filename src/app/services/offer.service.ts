@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Offer } from '../models/offer.model';
 
 const baseUrl = 'https://backend-recruitment-api.herokuapp.com'
-const offersUrl ='/offers/'
+const offersUrl ='/offers'
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +13,12 @@ export class OfferService {
 
 constructor(private http: HttpClient) { }
 
-getAll():Observable<Offer[]> {
+getAll():Observable<any> {
   return this.http.get<Offer[]>(baseUrl+offersUrl)
 }
 
 get(id: any): Observable<Offer> {
-  return this.http.get(`${baseUrl+offersUrl}${id}`)
+  return this.http.get<Offer>(`${baseUrl+offersUrl}/${id}`)
 }
 
 create(data:any): Observable<any>{
@@ -26,11 +26,11 @@ create(data:any): Observable<any>{
 }
 
 update(id:any, data:any): Observable<any> {
-  return this.http.put(`${baseUrl+offersUrl}${id}`, data)
+  return this.http.put(`${baseUrl+offersUrl}/${id}`, data)
 }
 
 delete(id:any): Observable<any> {
-  return this.http.delete(`${baseUrl+offersUrl}${id}`);
+  return this.http.delete(`${baseUrl+offersUrl}/${id}`);
 }
 deleteAll(): Observable<any> {
   return this.http.delete(baseUrl+offersUrl)
